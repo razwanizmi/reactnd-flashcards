@@ -15,7 +15,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <TopBar barStyle="light-content" backgroundColor="#7f8c8d" />
+          <TopBar barStyle="light-content" />
         </View>
       </Provider>
     );
