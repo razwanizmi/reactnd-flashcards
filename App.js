@@ -1,27 +1,43 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { TabNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { TabNavigator } from "react-navigation";
+import { reducer as formReducer } from "redux-form";
 import thunk from "redux-thunk";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import { NewDeckContainer } from "./containers";
 import { TopBar } from "./components";
 import * as reducers from "./reducers";
+import { silver, wetAsphalt } from "./utils/colors";
 
-const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
+const store = createStore(
+  combineReducers({ ...reducers, form: formReducer }),
+  applyMiddleware(thunk)
+);
 
 function Decks() {
   return (
-    <View style={{ justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 0.5,
+        borderColor: wetAsphalt,
+        borderRadius: 5,
+        margin: 10,
+        padding: 10,
+        minHeight: 100,
+        shadowColor: silver,
+        shadowOffset: {
+          width: 3,
+          height: 3
+        },
+        shadowRadius: 6,
+        shadowOpacity: 1
+      }}
+    >
       <Text>This is the decks component</Text>
-    </View>
-  );
-}
-
-function NewDeck() {
-  return (
-    <View style={{ justifyContent: "center", alignItems: "center" }}>
-      <Text>This is the new deck component</Text>
     </View>
   );
 }
@@ -42,7 +58,7 @@ const Tabs = TabNavigator(
       }
     },
     NewDeck: {
-      screen: NewDeck,
+      screen: NewDeckContainer,
       navigationOptions: {
         tabbarLabel: "New Deck",
         tabBarIcon: ({ tintColor }) => (
@@ -53,7 +69,7 @@ const Tabs = TabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: "#000"
+      activeTintColor: wetAsphalt
     }
   }
 );
