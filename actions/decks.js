@@ -17,12 +17,12 @@ export const fetchAndHandleDecks = () => {
 
 export const createAndHandleDeck = title => {
   return dispatch => {
-    createDeck(title).then(decks => dispatch(receiveDecks(decks)));
+    createDeck(title).then(() => dispatch(fetchAndHandleDecks()));
   };
 };
 
 export const createAndHandleDeckCard = (deckId, card) => {
   return dispatch => {
-    createDeckCard(deckId, card).then(decks => dispatch(receiveDecks(decks)));
+    createDeckCard(deckId, card).then(() => dispatch(fetchAndHandleDecks()));
   };
 };

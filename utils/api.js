@@ -1,6 +1,6 @@
 import { AsyncStorage } from "react-native";
 
-const storageKey = "Flashcard:decks";
+const storageKey = "Flashcards:decks";
 
 export const formatTitleId = title => {
   return title.split(" ").reduce((accumulator, word) => {
