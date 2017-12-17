@@ -15,7 +15,7 @@ export const fetchDecks = () => {
   return AsyncStorage.getItem(storageKey).then(results => JSON.parse(results));
 };
 
-export const createDeck = title => {
+export const createDeck = ({ title }) => {
   return AsyncStorage.mergeItem(
     storageKey,
     JSON.stringify({
