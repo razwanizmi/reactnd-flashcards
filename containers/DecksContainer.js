@@ -8,7 +8,8 @@ import * as decksActionCreators from "../actions/decks";
 class DecksContainer extends Component {
   static propTypes = {
     decks: PropTypes.object.isRequired,
-    fetchAndHandleDecks: PropTypes.func.isRequired
+    fetchAndHandleDecks: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -16,7 +17,9 @@ class DecksContainer extends Component {
   }
 
   render() {
-    return <Decks decks={this.props.decks} />;
+    return (
+      <Decks decks={this.props.decks} navigation={this.props.navigation} />
+    );
   }
 }
 

@@ -8,13 +8,14 @@ import {
   FormValidationMessage
 } from "react-native-elements";
 import { Field } from "redux-form";
+import { black, turquoise } from "../utils/colors";
 
 const renderField = field => {
   const { meta: { touched, error } } = field;
 
   return (
     <View>
-      <FormLabel>{field.label}</FormLabel>
+      <FormLabel labelStyle={styles.label}>{field.label}</FormLabel>
       <FormInput
         onChangeText={field.input.onChange}
         placeholder={field.placeholder}
@@ -34,9 +35,12 @@ const NewDeck = ({ handleSubmit }) => {
         label="Title"
         placeholder="Enter a title for this deck"
       />
-      <View style={styles.buttonContainer}>
-        <Button title="Create card" onPress={handleSubmit} />
-      </View>
+      <Button
+        title="Create deck"
+        onPress={handleSubmit}
+        backgroundColor={turquoise}
+        containerViewStyle={styles.buttonContainer}
+      />
     </View>
   );
 };
@@ -52,6 +56,9 @@ const styles = {
   },
   buttonContainer: {
     marginTop: 25
+  },
+  label: {
+    color: black
   }
 };
 

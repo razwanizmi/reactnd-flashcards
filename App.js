@@ -13,7 +13,7 @@ import {
 } from "./containers";
 import { TopBar } from "./components";
 import * as reducers from "./reducers";
-import { wetAsphalt } from "./utils/colors";
+import { peterRiver, white } from "./utils/colors";
 
 const store = createStore(
   combineReducers({ ...reducers, form: formReducer }),
@@ -50,26 +50,42 @@ const Tabs = TabNavigator(
       header: null
     },
     tabBarOptions: {
-      activeTintColor: wetAsphalt
+      activeTintColor: peterRiver
     }
   }
 );
 
-const MainNavigator = StackNavigator({
-  Home: {
-    screen: Tabs
+const MainNavigator = StackNavigator(
+  {
+    Home: {
+      screen: Tabs
+    },
+    DeckDetails: {
+      screen: DeckDetailsContainer
+    }
   },
-  DeckDetails: {
-    screen: DeckDetailsContainer
+  {
+    navigationOptions: {
+      headerBackTitleStyle: {
+        color: white
+      },
+      headerStyle: {
+        backgroundColor: peterRiver
+      },
+      headerTitleStyle: {
+        color: white
+      },
+      headerTintColor: white
+    }
   }
-});
+);
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <TopBar barStyle="dark-content" />
+          <TopBar backgroundColor={peterRiver} barStyle="light-content" />
           <MainNavigator />
         </View>
       </Provider>

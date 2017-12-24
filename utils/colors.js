@@ -1,4 +1,6 @@
-export const turqoise = "#1abc9c";
+export const white = "#ffffff";
+export const black = "#000000";
+export const turquoise = "#1abc9c";
 export const emerals = "#2ecc71";
 export const peterRiver = "#3498db";
 export const amethyst = "#9b59b6";

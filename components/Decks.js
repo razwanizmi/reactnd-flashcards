@@ -1,21 +1,34 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import { Card } from "react-native-elements";
+import { asbestos, black } from "../utils/colors";
 
-const Decks = ({ decks }) => {
+const Decks = ({ decks, navigation }) => {
   return (
     <ScrollView>
       {Object.keys(decks).map(deckId => (
-        <Card
+        <TouchableOpacity
           key={deckId}
-          title={decks[deckId].title}
-          titleStyle={styles.title}
+          onPress={() =>
+            navigation.navigate("DeckDetails", {
+              deckId,
+              deckTitle: decks[deckId].title
+            })
+          }
         >
-          <View style={styles.textContainer}>
-            <Text>{`${decks[deckId].questions.length} cards`}</Text>
-          </View>
-        </Card>
+          <Card
+            title={decks[deckId].title}
+            titleStyle={styles.title}
+            containerStyle={styles.cardContainer}
+          >
+            <View style={styles.textContainer}>
+              <Text style={styles.count}>{`${
+                decks[deckId].questions.length
+              } cards`}</Text>
+            </View>
+          </Card>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
@@ -26,13 +39,27 @@ Decks.propTypes = {
 };
 
 const styles = {
+  cardContainer: {
+    borderRadius: 10,
+    shadowColor: "rgba(0, 0, 0, 0.24)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    shadowRadius: 6,
+    shadowOpacity: 1
+  },
   textContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
   title: {
+    color: black,
     fontSize: 20
+  },
+  count: {
+    color: asbestos
   }
 };
 
