@@ -28,16 +28,16 @@ export const createDeck = ({ title }) => {
 };
 
 export const createDeckCard = (deckId, card) => {
-  const currentDecks = fetchDecks();
-
-  return AsyncStorage.setItem(
-    storageKey,
-    JSON.stringify({
-      ...currentDecks,
-      [deckId]: {
-        ...currentDecks[deckId],
-        questions: [...currentDecks[deckId].questions, card]
-      }
-    })
-  );
+  return fetchDecks().then(currentDecks => {
+    AsyncStorage.setItem(
+      storageKey,
+      JSON.stringify({
+        ...currentDecks,
+        [deckId]: {
+          ...currentDecks[deckId],
+          questions: [...currentDecks[deckId].questions, card]
+        }
+      })
+    );
+  });
 };

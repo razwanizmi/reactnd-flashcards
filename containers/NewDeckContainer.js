@@ -8,12 +8,14 @@ import * as decksActionCreators from "../actions/decks";
 
 class NewDeckContainer extends Component {
   static propTypes = {
-    createAndHandleDeck: PropTypes.func.isRequired
+    createAndHandleDeck: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   onSubmit = values => {
     this.props.createAndHandleDeck(values);
-    this.props.navigation.navigate("Decks");
+    this.props.navigation.goBack();
   };
 
   render() {

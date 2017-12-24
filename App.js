@@ -9,6 +9,7 @@ import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   DeckDetailsContainer,
   DecksContainer,
+  NewCardContainer,
   NewDeckContainer
 } from "./containers";
 import { TopBar } from "./components";
@@ -62,6 +63,9 @@ const MainNavigator = StackNavigator(
     },
     DeckDetails: {
       screen: DeckDetailsContainer
+    },
+    NewCard: {
+      screen: NewCardContainer
     }
   },
   {

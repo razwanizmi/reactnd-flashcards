@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import { Card } from "react-native-elements";
-import { asbestos, black } from "../utils/colors";
+import { asbestos, black, clouds } from "../utils/colors";
 
 const Decks = ({ decks, navigation }) => {
   return (
@@ -25,7 +25,7 @@ const Decks = ({ decks, navigation }) => {
             <View style={styles.textContainer}>
               <Text style={styles.count}>{`${
                 decks[deckId].questions.length
-              } cards`}</Text>
+              } card(s)`}</Text>
             </View>
           </Card>
         </TouchableOpacity>
@@ -35,19 +35,21 @@ const Decks = ({ decks, navigation }) => {
 };
 
 Decks.propTypes = {
-  decks: PropTypes.object.isRequired
+  decks: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 const styles = {
   cardContainer: {
-    borderRadius: 10,
+    // borderRadius: 10,
     shadowColor: "rgba(0, 0, 0, 0.24)",
     shadowOffset: {
       width: 3,
       height: 3
     },
     shadowRadius: 6,
-    shadowOpacity: 1
+    shadowOpacity: 1,
+    backgroundColor: clouds
   },
   textContainer: {
     flex: 1,

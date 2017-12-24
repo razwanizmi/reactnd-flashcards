@@ -11,17 +11,23 @@ class DeckDetailsContainer extends Component {
   };
 
   static propTypes = {
-    deck: PropTypes.object.isRequired
+    deck: PropTypes.object.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   render() {
-    return <DeckDetails deck={this.props.deck} />
+    return (
+      <DeckDetails deck={this.props.deck} navigation={this.props.navigation} />
+    );
   }
 }
 
 const mapStateToProps = ({ decks }, { navigation }) => {
   return {
-    deck: decks[navigation.state.params.deckId]
+    deck: {
+      ...decks[navigation.state.params.deckId],
+      deckId: navigation.state.params.deckId
+    }
   };
 };
 

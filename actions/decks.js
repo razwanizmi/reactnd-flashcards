@@ -1,3 +1,4 @@
+import { reset } from "redux-form";
 import { fetchDecks, createDeck, createDeckCard } from "../utils/api";
 
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
@@ -17,7 +18,10 @@ export const fetchAndHandleDecks = () => {
 
 export const createAndHandleDeck = title => {
   return dispatch => {
-    createDeck(title).then(() => dispatch(fetchAndHandleDecks()));
+    createDeck(title).then(() => {
+      dispatch(reset("NewDeckForm"));
+      dispatch(fetchAndHandleDecks());
+    });
   };
 };
 
