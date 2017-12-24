@@ -6,7 +6,11 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { reducer as formReducer } from "redux-form";
 import thunk from "redux-thunk";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
-import { DecksContainer, NewDeckContainer } from "./containers";
+import {
+  DeckDetailsContainer,
+  DecksContainer,
+  NewDeckContainer
+} from "./containers";
 import { TopBar } from "./components";
 import * as reducers from "./reducers";
 import { wetAsphalt } from "./utils/colors";
@@ -54,6 +58,9 @@ const Tabs = TabNavigator(
 const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs
+  },
+  DeckDetails: {
+    screen: DeckDetailsContainer
   }
 });
 
