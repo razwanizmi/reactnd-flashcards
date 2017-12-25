@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 import { StackNavigator, TabNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
@@ -53,7 +53,7 @@ const Tabs = TabNavigator(
       header: null
     },
     tabBarOptions: {
-      activeTintColor: peterRiver
+      activeTintColor: Platform.OS === "ios" ? peterRiver : white
     }
   }
 );
