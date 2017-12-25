@@ -4,6 +4,8 @@ A mobile app that lets users create decks of flash cards, and practice their kno
 
 Bootstrapped with [create-react-native-app](https://github.com/react-community/create-react-native-app) and [Expo](https://github.com/expo/expo).
 
+Tested on the iPhone 8 and Google Galaxy Nexus simulators.
+
 ## Getting started
 
 To get started:
