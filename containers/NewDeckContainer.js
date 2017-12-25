@@ -14,8 +14,12 @@ class NewDeckContainer extends Component {
   };
 
   onSubmit = values => {
-    this.props.createAndHandleDeck(values);
-    this.props.navigation.goBack();
+    this.props.createAndHandleDeck(values, (deckId, deckTitle) => {
+      this.props.navigation.navigate("DeckDetails", {
+        deckId,
+        deckTitle
+      });
+    });
   };
 
   render() {
