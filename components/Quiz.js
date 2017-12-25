@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, Dimensions } from "react-native";
 import PropTypes from "prop-types";
 import { Button } from "react-native-elements";
 import { peterRiver, turquoise } from "../utils/colors";
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from "../utils/notifications";
 
 const Quiz = ({
   deck,
@@ -17,6 +21,8 @@ const Quiz = ({
   const question = deck.questions[quiz.currentQuestion];
 
   if (!question) {
+    clearLocalNotification().then(() => setLocalNotification());
+
     return (
       <View style={styles.contentContainer}>
         <Text style={styles.contentText}>
@@ -25,15 +31,15 @@ const Quiz = ({
           } question(s) correctly!`}
         </Text>
         <Button
-          title="Restart quiz"
-          onPress={resetQuiz}
-          backgroundColor={turquoise}
+          title="Back to deck"
+          onPress={() => navigation.goBack()}
           containerViewStyle={styles.buttonContainer}
           buttonStyle={styles.button}
         />
         <Button
-          title="Back to deck"
-          onPress={() => navigation.goBack()}
+          title="Restart quiz"
+          onPress={resetQuiz}
+          backgroundColor={turquoise}
           containerViewStyle={styles.buttonContainer}
           buttonStyle={styles.button}
         />
@@ -68,15 +74,15 @@ const Quiz = ({
           </View>
         )}
         <Button
-          title="Correct"
-          onPress={rightAnswer}
-          backgroundColor={turquoise}
+          title="Incorrect"
+          onPress={wrongAnswer}
           containerViewStyle={styles.buttonContainer}
           buttonStyle={styles.button}
         />
         <Button
-          title="Incorrect"
-          onPress={wrongAnswer}
+          title="Correct"
+          onPress={rightAnswer}
+          backgroundColor={turquoise}
           containerViewStyle={styles.buttonContainer}
           buttonStyle={styles.button}
         />

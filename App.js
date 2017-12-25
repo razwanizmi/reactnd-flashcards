@@ -16,6 +16,7 @@ import {
 import { TopBar } from "./components";
 import * as reducers from "./reducers";
 import { peterRiver, white } from "./utils/colors";
+import { setLocalNotification } from "./utils/notifications";
 
 const store = createStore(
   combineReducers({ ...reducers, form: formReducer }),
@@ -89,6 +90,10 @@ const MainNavigator = StackNavigator(
 );
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     return (
       <Provider store={store}>
