@@ -30,7 +30,8 @@ const quiz = (state = initialState, action) => {
       return {
         ...state,
         currentQuestion: state.currentQuestion + 1,
-        rightAnswers: state.rightAnswers + 1
+        rightAnswers: state.rightAnswers + 1,
+        showAnswer: false
       };
     case SHOW_ANSWER:
       return {
@@ -45,7 +46,8 @@ const quiz = (state = initialState, action) => {
     case WRONG_ANSWER:
       return {
         ...state,
-        currentQuestion: state.currentQuestion + 1
+        currentQuestion: state.currentQuestion + 1,
+        showAnswer: false
       };
     default:
       return state;

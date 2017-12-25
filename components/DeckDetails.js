@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Button } from "react-native-elements";
 import { black, turquoise } from "../utils/colors";
 
-const DeckDetails = ({ deck, navigation }) => {
+const DeckDetails = ({ deck, handleAddCard, handleStartQuiz }) => {
   return (
     <View style={styles.containerStyle}>
       <View style={{ alignItems: "center" }}>
@@ -13,12 +13,12 @@ const DeckDetails = ({ deck, navigation }) => {
       </View>
       <Button
         title="Add a card"
-        onPress={() => navigation.navigate("NewCard", { deckId: deck.deckId })}
+        onPress={handleAddCard}
         containerViewStyle={styles.buttonContainer}
       />
       <Button
         title="Start quiz"
-        onPress={() => console.log("Start quiz")}
+        onPress={handleStartQuiz}
         backgroundColor={turquoise}
         containerViewStyle={styles.buttonContainer}
       />
@@ -28,7 +28,8 @@ const DeckDetails = ({ deck, navigation }) => {
 
 DeckDetails.propTypes = {
   deck: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired
+  handleAddCard: PropTypes.func.isRequired,
+  handleStartQuiz: PropTypes.func.isRequired
 };
 
 const styles = {

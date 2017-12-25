@@ -10,7 +10,8 @@ import {
   DeckDetailsContainer,
   DecksContainer,
   NewCardContainer,
-  NewDeckContainer
+  NewDeckContainer,
+  QuizContainer
 } from "./containers";
 import { TopBar } from "./components";
 import * as reducers from "./reducers";
@@ -66,6 +67,9 @@ const MainNavigator = StackNavigator(
     },
     NewCard: {
       screen: NewCardContainer
+    },
+    Quiz: {
+      screen: QuizContainer
     }
   },
   {

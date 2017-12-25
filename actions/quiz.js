@@ -1,9 +1,16 @@
+export const NEW_QUIZ = "NEW_QUIZ";
 export const RESET_QUIZ = "RESET_QUIZ";
 export const RIGHT_ANSWER = "RIGHT_ANSWER";
 export const SHOW_ANSWER = "SHOW_ANSWER";
 export const SHOW_QUESTION = "SHOW_QUESTION";
-export const START_QUIZ = "START_QUIZ";
 export const WRONG_ANSWER = "WRONG_ANSWER";
+
+export const newQuiz = deckId => {
+  return {
+    type: NEW_QUIZ,
+    deckId
+  };
+};
 
 export const resetQuiz = () => {
   return {
@@ -26,13 +33,6 @@ export const showAnswer = () => {
 export const showQuestion = () => {
   return {
     type: SHOW_QUESTION
-  };
-};
-
-export const startQuiz = deckId => {
-  return {
-    type: START_QUIZ,
-    deckId
   };
 };
 
