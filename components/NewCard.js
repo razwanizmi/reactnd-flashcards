@@ -56,6 +56,11 @@ const NewCard = ({ handleSubmit, handleBack }) => {
   );
 };
 
+NewCard.propTypes = {
+  handleBack: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+};
+
 const styles = {
   formContainer: {
     flex: 1,
