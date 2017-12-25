@@ -23,8 +23,10 @@ const quiz = (state = initialState, action) => {
       };
     case RESET_QUIZ:
       return {
-        ...initialState,
-        deckId: state.DeckId
+        ...state,
+        currentQuestion: 0,
+        rightAnswers: 0,
+        showAnswer: false
       };
     case RIGHT_ANSWER:
       return {

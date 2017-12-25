@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { Quiz } from "../components";
 import * as quizActionCreators from "../actions/quiz";
 
 class QuizContainer extends Component {
@@ -25,9 +25,7 @@ class QuizContainer extends Component {
 
   render() {
     return (
-      <View>
-        <Text>{JSON.stringify(this.props, null, 2)}</Text>
-      </View>
+      <Quiz {...this.props} />
     );
   }
 }

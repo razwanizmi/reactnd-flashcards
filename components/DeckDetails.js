@@ -6,7 +6,7 @@ import { black, turquoise } from "../utils/colors";
 
 const DeckDetails = ({ deck, handleAddCard, handleStartQuiz }) => {
   return (
-    <View style={styles.containerStyle}>
+    <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.count}>{`${deck.questions.length} card(s)`}</Text>
@@ -21,6 +21,7 @@ const DeckDetails = ({ deck, handleAddCard, handleStartQuiz }) => {
         onPress={handleStartQuiz}
         backgroundColor={turquoise}
         containerViewStyle={styles.buttonContainer}
+        disabled={deck.questions.length === 0}
       />
     </View>
   );
@@ -33,7 +34,7 @@ DeckDetails.propTypes = {
 };
 
 const styles = {
-  containerStyle: {
+  container: {
     flex: 1,
     justifyContent: "center"
   },
